@@ -8,8 +8,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Donations"
-    android:textColor="@color/colorPrimary"
-    android:background="@color/colorText"
+        android:textColor="@color/colorPrimary"
+        android:background="@color/colorText"
         android:textSize="30sp"
         android:layout_centerInParent="true"
         />
