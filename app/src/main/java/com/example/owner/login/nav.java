@@ -1,5 +1,6 @@
 package com.example.owner.login;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -8,9 +9,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseUser;
+
 public class nav extends AppCompatActivity {
 
 //    private TextView mTextMessage;
+
+    private FirebaseUser currentUser;
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListner = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -66,6 +71,21 @@ public class nav extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(navListner);
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new UserProfileFragment()).commit();
+    }
+
+
+    protected void onStart(){
+        super.onStart();
+
+        if(currentUser == null){
+            sendUserToLoginActivity();
+        }
+    }
+
+    private void sendUserToLoginActivity() {
+
+        Intent loginIntent = new Intent(nav.this, LoginActivity.class);
+        startActivity(loginIntent);
     }
 
 }
